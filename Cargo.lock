@@ -656,7 +656,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "tsk"
+name = "tsh"
 version = "0.1.0"
 dependencies = [
  "deno_task_shell",
