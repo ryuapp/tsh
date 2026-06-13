@@ -17,9 +17,9 @@ jobs:
       matrix:
         include:
           - os: ubuntu-24.04
-            target: x86_64-unknown-linux-gnu
+            target: x86_64-unknown-linux-musl
           - os: ubuntu-24.04-arm
-            target: aarch64-unknown-linux-gnu
+            target: aarch64-unknown-linux-musl
           - os: macos-15
             target: aarch64-apple-darwin
           - os: windows-2025
@@ -33,7 +33,6 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             github.com:443
-            release-assets.githubusercontent.com:443
             index.crates.io:443
             static.crates.io:443
             static.rust-lang.org:443
@@ -57,7 +56,6 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             github.com:443
-            release-assets.githubusercontent.com:443
             index.crates.io:443
             static.crates.io:443
             static.rust-lang.org:443
