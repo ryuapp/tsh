@@ -5,4 +5,5 @@ edition = "2024"
 
 [dependencies]
 deno_task_shell = { version = "0.33.0", default-features = false }
-v8 = "150.0.0"
+rquickjs = { version = "0.12", features = ["futures"] }
+pollster = "0.4"
