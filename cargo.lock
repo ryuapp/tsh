@@ -104,6 +104,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "deno_task_shell"
+version = "0.33.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bd069c87eb3cdc25e9898fe633a07ec7f20218e92ad3e7eccab3db324764d4fb"
+dependencies = [
+ "bitflags",
+ "monch",
+ "thiserror",
+]
+
+[[package]]
 name = "diplomat"
 version = "0.15.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -361,6 +372,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "monch"
+version = "0.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6bcc6ad3b93f756f2532d29f7c7291b8d246a2c460a99a3611327bb726830014"
+
+[[package]]
 name = "nom"
 version = "7.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -596,6 +613,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "thiserror"
+version = "2.0.18"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4288b5bcbc7920c07a1149a35cf9590a2aa808e0bc1eafaade0b80947865fbc4"
+dependencies = [
+ "thiserror-impl",
+]
+
+[[package]]
+name = "thiserror-impl"
+version = "2.0.18"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ebc4ee7f67670e9b64d05fa4253e753e016c6c95ff35b89b7941d6b856dec1d5"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "timezone_provider"
 version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -622,6 +659,7 @@ dependencies = [
 name = "tsk"
 version = "0.1.0"
 dependencies = [
+ "deno_task_shell",
  "v8",
 ]
 
