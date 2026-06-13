@@ -265,8 +265,8 @@ mod tests {
             "const results = [];\n\
              results.push('Hello from hello.js');\n\
              results.push(await $`echo hello`);\n\
-             try { $.tsk = 'polluted'; } catch {}\n\
-             results.push(String($.tsk));\n\
+             try { $.tsh = 'polluted'; } catch {}\n\
+             results.push(String($.tsh));\n\
              results.push(String(Object.getPrototypeOf($)));\n\
              const value = {};\n\
              value.__proto__ = { polluted: true };\n\

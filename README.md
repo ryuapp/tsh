@@ -1,3 +1,3 @@
-# tsk
+# tsh
 
-A task runner with TypeScript as a shell script.
+A TypeScript runner for use as a shell script.
