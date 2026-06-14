@@ -4,6 +4,7 @@ use std::path::PathBuf;
 
 mod runtime;
 mod shell;
+mod strip_types;
 
 fn main() {
     if let Err(err) = run() {
@@ -16,7 +17,7 @@ fn run() -> Result<(), String> {
     let script_path = env::args_os()
         .nth(1)
         .map(PathBuf::from)
-        .ok_or_else(|| "usage: tsh <script.js>".to_string())?;
+        .ok_or_else(|| "usage: tsh <script.ts>".to_string())?;
     let source_code = fs::read_to_string(&script_path)
         .map_err(|err| format!("failed to read {}: {err}", script_path.display()))?;
 
