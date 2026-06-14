@@ -5,5 +5,11 @@ edition = "2024"
 
 [dependencies]
 deno_task_shell = { version = "0.33.0", default-features = false }
-rquickjs = { version = "0.12", features = ["futures"] }
+oxc_allocator = "0.135.0"
+oxc_codegen = "0.135.0"
+oxc_parser = "0.135.0"
+oxc_semantic = "0.135.0"
+oxc_span = "0.135.0"
+oxc_transformer = "0.135.0"
 pollster = "0.4"
+rquickjs = { version = "0.12", features = ["futures"] }

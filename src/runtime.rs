@@ -16,6 +16,7 @@ pub fn eval_script(source_code: &str, filename: &str) -> Result<String, String> 
 }
 
 async fn eval_script_async(source_code: &str, filename: &str) -> Result<String, String> {
+    let source_code = crate::strip_types::transform(source_code, filename)?;
     let runtime = AsyncRuntime::new().map_err(|err| err.to_string())?;
     let context = AsyncContext::full(&runtime)
         .await
@@ -25,7 +26,7 @@ async fn eval_script_async(source_code: &str, filename: &str) -> Result<String, 
         .async_with(async |ctx| {
             RuntimeContext::new(ctx)
                 .initialize()?
-                .evaluate_async_script(source_code, filename)
+                .evaluate_async_script(&source_code, filename)
                 .await
         })
         .await
@@ -209,5 +210,23 @@ mod tests {
         let err = eval_script("return 1;", "<test>").unwrap_err();
 
         assert!(err.contains("return"));
+    }
+
+    #[test]
+    fn evaluates_typescript_after_stripping_types() {
+        let result = eval_script(
+            "type Greeting = { message: string };\n\
+             interface Runner { run<T>(value: T): T; }\n\
+             const greeting: Greeting = { message: 'hello' };\n\
+             const runner: Runner = { run<T>(value: T): T { return value; } };\n\
+             const actual: string = runner.run(greeting.message);\n\
+             if (actual !== 'hello') {\n\
+                 throw new Error(actual);\n\
+             }",
+            "test.ts",
+        )
+        .unwrap();
+
+        assert_eq!(result, "undefined");
     }
 }
